@@ -17,3 +17,4 @@ use Illuminate\Http\Request;
 
 Route::middleware('api')->get('/accounts', 'AccountController@get');
 Route::middleware('api')->post('/accounts', 'AccountController@post');
+Route::middleware('api')->put('/accounts/{id}', 'AccountController@update');

@@ -31,4 +31,14 @@ class AccountController extends Controller {
       return 'Error';
     }
   }
+
+  public function update($id, Request $request) {
+    try {
+      $account = $request->all();
+      DB::table('accounts')->update($account);
+      return $account;
+    } catch (Exception $e) {
+      return 'Error';
+    }
+  }
 }
