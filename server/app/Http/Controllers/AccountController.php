@@ -9,6 +9,15 @@ use Illuminate\Support\Facades\DB;
 
 class AccountController extends Controller {
   public function get(Request $request) {
-    return DB::select('select * from accounts');
+    // possible params:
+        // place (Confirmation, Setup, Activated, Deactivated)
+        // transaction_date (day, week, month)
+    $query = DB::table('accounts');
+    $place = $request->input('place');
+    $date = $request->input('date');
+    if ($place) {
+      $query->where('place', $place);
+    }
+    return $query->get();
   }
 }
