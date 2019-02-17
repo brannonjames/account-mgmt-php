@@ -20,4 +20,15 @@ class AccountController extends Controller {
     }
     return $query->get();
   }
+
+  public function post(Request $request) {
+    try {
+      $account = $request->all();
+      // TODO - figure out how to return value after insert
+      DB::table('accounts')->insert($account);
+      return $account;
+    } catch (Exception $e) {
+      return 'Error';
+    }
+  }
 }
